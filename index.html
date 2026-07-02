@@ -3,16 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Interactieve routekaart en studiegids voor het praktijkexamen rijbewijs B in Roeselare. Alle 20 officiële examenroutes, checkpoints, valkuilen en tips.">
-<title>Rijexamen Roeselare — Routekaart & Studiegids</title>
+<meta name="description" content="Complete voorbereiding voor het praktisch rijexamen B in Vlaanderen — RGT gevaarherkenning, manoeuvres, voertuigcontrole, verkeersregels, veel gemaakte fouten en interactieve oefentoets.">
+<title>Rijexamen Voorbereiding — RGT, Manoeuvres & Praktijk Tips</title>
 <style>
-  /* ===== DESIGN TOKENS ===== */
   :root {
     --asphalt: #0c1929;
-    --asphalt-light: #152238;
-    --pavement: #f8f9fb;
-    --white: #ffffff;
-    --card: #ffffff;
     --amber: #e8920b;
     --amber-light: #fef3c7;
     --blue: #1a56db;
@@ -23,7 +18,6 @@
     --red-light: #fef2f2;
     --text: #1e293b;
     --text-muted: #64748b;
-    --text-light: #94a3b8;
     --border: #e2e8f0;
     --border-light: #f1f5f9;
     --shadow-sm: 0 1px 2px rgba(12,25,41,0.05);
@@ -32,1285 +26,794 @@
     --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 16px;
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
   }
-
-  /* ===== RESET ===== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body {
-    font-family: var(--font-sans);
-    font-size: 17px;
-    line-height: 1.65;
-    color: var(--text);
-    background: var(--pavement);
+    font-family: var(--font);
+    font-size: 17px; line-height: 1.65;
+    color: var(--text); background: #f8f9fb;
     overflow-x: hidden;
   }
-  img, svg { display: block; max-width: 100%; }
   button { cursor: pointer; font: inherit; border: none; background: none; }
   a { color: var(--blue); text-decoration: none; }
   a:hover { text-decoration: underline; }
-
-  /* ===== UTILITY ===== */
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
   .section { padding: 80px 0; }
+  .section-alt { background: #fff; }
 
-  /* ===== NAVIGATION ===== */
+  /* NAV */
   .nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(248,249,251,0.85);
-    backdrop-filter: blur(16px);
+    background: rgba(248,249,251,0.88); backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
-    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--border); padding: 12px 0;
   }
   .nav .container { display: flex; align-items: center; justify-content: space-between; }
-  .nav-logo {
-    font-weight: 800; font-size: 18px; color: var(--asphalt);
-    letter-spacing: -0.3px;
-    display: flex; align-items: center; gap: 8px;
-  }
+  .nav-logo { font-weight: 800; font-size: 17px; color: var(--asphalt); letter-spacing: -0.3px; display: flex; align-items: center; gap: 8px; }
   .nav-logo span { color: var(--amber); }
-  .nav-links { display: flex; gap: 24px; list-style: none; }
-  .nav-links a { font-size: 14px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.15s; }
+  .nav-links { display: flex; gap: 20px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.15s; }
   .nav-links a:hover { color: var(--amber); text-decoration: none; }
-  .nav-links a.active { color: var(--amber); }
 
-  /* ===== HERO ===== */
+  /* HERO */
   .hero {
-    position: relative;
-    background: var(--asphalt);
-    color: var(--white);
-    padding: 100px 0 120px;
-    overflow: hidden;
+    position: relative; background: var(--asphalt); color: #fff;
+    padding: 80px 0 100px; overflow: hidden;
   }
   .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232,146,11,0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 50% at 85% 20%, rgba(26,86,219,0.08) 0%, transparent 60%);
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(232,146,11,0.13) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 80% 60%, rgba(26,86,219,0.08) 0%, transparent 60%);
     pointer-events: none;
   }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
+  .hero-content { position: relative; z-index: 1; max-width: 680px; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 100px;
-    padding: 6px 16px 6px 6px;
-    font-size: 13px; font-weight: 600;
-    letter-spacing: 0.4px;
-    margin-bottom: 28px;
-    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px; padding: 6px 16px 6px 6px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.4px;
+    margin-bottom: 24px; color: rgba(255,255,255,0.9);
   }
-  .hero-badge .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--amber);
-    animation: pulse-dot 2s ease-in-out infinite;
-  }
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.3); }
-  }
-  .hero h1 {
-    font-size: clamp(36px, 5.5vw, 60px);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -1.2px;
-    margin-bottom: 20px;
-  }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--amber);
-  }
-  .hero p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.7);
-    max-width: 440px;
-    margin-bottom: 36px;
-  }
-  .hero-stats {
-    display: flex; gap: 32px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  .hero-stat-number {
-    font-size: 32px; font-weight: 800; color: var(--white);
-    letter-spacing: -0.5px;
-  }
-  .hero-stat-label {
-    font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5);
-    text-transform: uppercase; letter-spacing: 1px;
-    margin-top: 2px;
-  }
+  .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+  .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; }
+  .hero h1 em { font-style: normal; color: var(--amber); }
+  .hero p { font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.7); max-width: 520px; margin-bottom: 28px; }
+  .hero-quickfacts { display: flex; gap: 24px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .hero-fact { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.8); }
+  .hero-fact strong { color: #fff; font-size: 15px; }
+  .hero-fact-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .hero-fact-icon.amber { background: rgba(232,146,11,0.2); color: var(--amber); }
+  .hero-fact-icon.blue { background: rgba(26,86,219,0.2); color: #60a5fa; }
+  .hero-fact-icon.red { background: rgba(220,38,38,0.2); color: #f87171; }
 
-  /* Road trace illustration */
-  .hero-illustration {
-    position: relative;
-    width: 100%;
-    height: 340px;
+  /* STEP FLOW */
+  .step-flow { display: flex; gap: 0; counter-reset: step; margin: 40px 0; flex-wrap: wrap; }
+  .step-item {
+    flex: 1; min-width: 160px;
+    position: relative; padding: 28px 20px; text-align: center;
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md);
+    counter-increment: step;
   }
-  .road-trace {
-    position: absolute;
-    inset: 0;
+  .step-item:not(:last-child) { margin-right: -1px; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+  .step-item:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+  .step-item::before {
+    content: counter(step);
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--asphalt); color: #fff;
+    font-weight: 800; font-size: 15px; margin-bottom: 10px;
   }
-  .road-trace svg { width: 100%; height: 100%; }
-  .trace-path {
-    stroke: rgba(255,255,255,0.2);
-    stroke-width: 2;
-    stroke-dasharray: 8 4;
-    fill: none;
-    stroke-linecap: round;
-  }
-  .trace-path.highlight {
-    stroke: var(--amber);
-    stroke-dasharray: none;
-    stroke-width: 3;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: draw-path 2.5s ease-out 0.5s forwards;
-  }
-  @keyframes draw-path {
-    to { stroke-dashoffset: 0; }
-  }
-  .trace-point {
-    fill: var(--asphalt);
-    stroke: var(--white);
-    stroke-width: 3;
-    transition: all 0.3s ease;
-  }
-  .trace-point.active {
-    fill: var(--amber);
-    stroke: var(--amber);
-    animation: pulse-point 1.5s ease-in-out infinite;
-  }
-  @keyframes pulse-point {
-    0%, 100% { r: 10; }
-    50% { r: 14; }
-  }
-  .trace-label {
-    fill: rgba(255,255,255,0.8);
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
+  .step-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+  .step-item p { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
 
-  /* ===== FILTER BAR ===== */
-  .filter-bar {
-    display: flex; gap: 8px; flex-wrap: wrap;
-    margin-bottom: 36px;
-  }
-  .filter-btn {
-    padding: 8px 18px;
-    border-radius: 100px;
-    font-size: 13px; font-weight: 600;
-    letter-spacing: 0.3px;
-    color: var(--text-muted);
-    background: var(--white);
-    border: 1px solid var(--border);
+  /* SECTION HEADERS */
+  .section-header { margin-bottom: 36px; }
+  .section-header h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .section-header p { font-size: 15px; color: var(--text-muted); }
+
+  /* CARD GRID */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 28px;
     transition: all 0.2s ease;
   }
-  .filter-btn:hover {
-    color: var(--text);
-    border-color: var(--text-light);
-  }
-  .filter-btn.active {
-    background: var(--asphalt);
-    color: var(--white);
-    border-color: var(--asphalt);
-  }
-  .filter-count {
-    font-size: 11px; font-weight: 500;
-    margin-left: 4px;
-    opacity: 0.7;
-  }
-
-  /* ===== ROUTE CARDS ===== */
-  .route-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 16px;
-  }
-  .route-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    transition: all 0.25s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .route-card:hover {
-    box-shadow: var(--shadow-md);
-    border-color: transparent;
-    transform: translateY(-2px);
-  }
-  .route-card.expanded {
-    grid-column: 1 / -1;
-    box-shadow: var(--shadow-lg);
-    border-color: var(--amber);
-    background: var(--white);
-  }
-  .route-card-header {
-    display: flex; align-items: flex-start; justify-content: space-between;
-    margin-bottom: 16px;
-  }
-  .route-number {
-    font-family: var(--font-mono);
-    font-size: 28px; font-weight: 700;
-    color: var(--asphalt);
-    letter-spacing: -1px;
-    line-height: 1;
-  }
-  .route-badge {
+  .card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .card-badge {
     display: inline-flex; align-items: center; gap: 5px;
     padding: 3px 10px; border-radius: 100px;
-    font-size: 11px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.6px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+    margin-bottom: 12px;
   }
-  .badge-centrum { background: var(--blue-light); color: var(--blue); }
-  .badge-landelijk { background: var(--green-light); color: var(--green); }
-  .badge-snelweg { background: var(--red-light); color: var(--red); }
-  .badge-industrie { background: var(--amber-light); color: #b45309; }
-  .badge-gemengd { background: #f1f5f9; color: #475569; }
-
-  .route-title {
-    font-size: 17px; font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
+  .badge-rgt { background: var(--red-light); color: var(--red); }
+  .badge-manoeuvre { background: var(--blue-light); color: var(--blue); }
+  .badge-regels { background: var(--amber-light); color: #b45309; }
+  .badge-controle { background: var(--green-light); color: var(--green); }
+  .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+  .card .step-list { list-style: none; margin-top: 12px; }
+  .card .step-list li {
+    padding: 6px 0 6px 24px; position: relative;
+    font-size: 14px; color: var(--text); border-bottom: 1px solid var(--border-light);
   }
-  .route-area {
-    font-size: 13px; color: var(--text-muted);
-    margin-bottom: 14px;
-  }
-  .checkpoint-list {
-    list-style: none;
-    display: flex; flex-direction: column; gap: 8px;
-  }
-  .checkpoint-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 10px 12px;
-    background: var(--border-light);
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    line-height: 1.4;
-    transition: background 0.15s;
-  }
-  .checkpoint-item:hover { background: var(--amber-light); }
-  .checkpoint-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--amber);
-    flex-shrink: 0;
-    margin-top: 6px;
-  }
-  .checkpoint-dot.start { background: var(--green); }
-  .checkpoint-dot.end { background: var(--red); }
-
-  .route-expand-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    margin-top: 14px;
-    font-size: 13px; font-weight: 600;
-    color: var(--amber);
-    transition: gap 0.2s;
-  }
-  .route-expand-btn:hover { gap: 10px; }
-  .route-details {
-    display: none;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-  .route-card.expanded .route-details { display: block; }
-
-  .detail-section { margin-bottom: 20px; }
-  .detail-section:last-child { margin-bottom: 0; }
-  .detail-label {
-    font-size: 11px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 1px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-  .hazard-list {
-    list-style: none;
-    display: flex; flex-direction: column; gap: 6px;
-  }
-  .hazard-item {
-    display: flex; align-items: flex-start; gap: 8px;
-    font-size: 14px; color: var(--text);
-    padding: 8px 12px;
-    background: var(--red-light);
-    border-radius: var(--radius-sm);
-    border-left: 3px solid var(--red);
-  }
-  .hazard-item .icon { flex-shrink: 0; margin-top: 1px; }
-  .tip-box {
-    background: var(--blue-light);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    font-size: 14px; line-height: 1.5;
-    border-left: 3px solid var(--blue);
-  }
-  .tip-box strong { color: var(--blue); }
-
-  /* Trace animation in expanded card */
-  .route-trace-container {
-    background: var(--asphalt);
-    border-radius: var(--radius-md);
-    padding: 32px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .route-trace-container svg { width: 100%; height: 120px; }
-  .mini-trace-path {
-    fill: none;
-    stroke: rgba(255,255,255,0.2);
-    stroke-width: 2;
-    stroke-dasharray: 6 4;
-  }
-  .mini-trace-highlight {
-    fill: none;
-    stroke: var(--amber);
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: draw-path 1.5s ease-out 0.2s forwards;
-  }
-  .mini-trace-point {
-    fill: var(--white);
-    stroke: var(--amber);
-    stroke-width: 2;
-  }
-  .mini-trace-point.mid { fill: var(--amber); }
-
-  /* ===== TIPS SECTION ===== */
-  .tips-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
-  }
-  .tip-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 28px;
-    transition: all 0.2s ease;
-  }
-  .tip-card:hover { box-shadow: var(--shadow-md); }
-  .tip-card-icon {
-    width: 44px; height: 44px;
-    border-radius: var(--radius-sm);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    margin-bottom: 16px;
-  }
-  .tip-card-icon.red { background: var(--red-light); color: var(--red); }
-  .tip-card-icon.amber { background: var(--amber-light); color: var(--amber); }
-  .tip-card-icon.blue { background: var(--blue-light); color: var(--blue); }
-  .tip-card-icon.green { background: var(--green-light); color: var(--green); }
-  .tip-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
-  .tip-card p { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
-
-  /* ===== EXAM INFO ===== */
-  .info-panel {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    margin-bottom: 16px;
-  }
-  .info-panel h3 {
-    font-size: 18px; font-weight: 700;
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
-  }
-  .info-item {}
-  .info-item-label {
-    font-size: 11px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.8px; color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-  .info-item-value {
-    font-size: 15px; font-weight: 600; color: var(--text);
+  .card .step-list li:last-child { border-bottom: none; }
+  .card .step-list li::before {
+    content: ''; position: absolute; left: 0; top: 14px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--amber);
   }
 
-  /* ===== FOOTER ===== */
-  .footer {
-    background: var(--asphalt);
-    color: rgba(255,255,255,0.6);
-    padding: 40px 0;
-    font-size: 13px;
+  /* ACCORDION */
+  .accordion { margin-bottom: 8px; }
+  .accordion-trigger {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius-md); font-size: 15px; font-weight: 700; color: var(--text);
+    transition: all 0.15s; text-align: left;
   }
-  .footer .container {
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 16px;
+  .accordion-trigger:hover { border-color: var(--amber); }
+  .accordion-trigger[aria-expanded="true"] { border-color: var(--amber); background: var(--amber-light); }
+  .accordion-trigger .icon { font-size: 20px; transition: transform 0.2s; color: var(--amber); }
+  .accordion-trigger[aria-expanded="true"] .icon { transform: rotate(45deg); }
+  .accordion-panel {
+    display: none; padding: 20px;
+    background: #fff; border: 1px solid var(--border); border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    font-size: 14px; color: var(--text); line-height: 1.6;
   }
+  .accordion-panel.open { display: block; }
+  .accordion-panel ul { padding-left: 20px; margin: 8px 0; }
+  .accordion-panel ul li { margin-bottom: 4px; }
+  .accordion-panel .highlight { background: var(--amber-light); padding: 12px 16px; border-radius: var(--radius-sm); margin: 12px 0; font-weight: 600; border-left: 3px solid var(--amber); }
+
+  /* QUIZ */
+  .quiz-container { max-width: 700px; }
+  .quiz-progress { display: flex; gap: 6px; margin-bottom: 24px; }
+  .quiz-dot { width: 24px; height: 4px; border-radius: 2px; background: var(--border); transition: background 0.2s; }
+  .quiz-dot.done { background: var(--green); }
+  .quiz-dot.wrong { background: var(--red); }
+  .quiz-dot.current { background: var(--amber); }
+  .quiz-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; }
+  .quiz-question { font-size: 18px; font-weight: 700; margin-bottom: 20px; line-height: 1.4; }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+  .quiz-option {
+    width: 100%; text-align: left; padding: 14px 18px;
+    background: #fff; border: 2px solid var(--border); border-radius: var(--radius-md);
+    font-size: 15px; transition: all 0.15s;
+  }
+  .quiz-option:hover { border-color: var(--blue); background: var(--blue-light); }
+  .quiz-option.selected { border-color: var(--blue); background: var(--blue-light); }
+  .quiz-option.correct { border-color: var(--green); background: var(--green-light); }
+  .quiz-option.incorrect { border-color: var(--red); background: var(--red-light); }
+  .quiz-feedback {
+    margin-top: 16px; padding: 16px; border-radius: var(--radius-md);
+    font-size: 14px; line-height: 1.5; display: none;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.pass { background: var(--green-light); border-left: 3px solid var(--green); }
+  .quiz-feedback.fail { background: var(--red-light); border-left: 3px solid var(--red); }
+  .quiz-score { font-size: 40px; font-weight: 800; color: var(--text); text-align: center; margin-bottom: 8px; }
+  .quiz-score-label { font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 20px; }
+
+  /* INFO BOX */
+  .info-box { background: var(--blue-light); border-radius: var(--radius-md); padding: 20px 24px; border-left: 3px solid var(--blue); font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+  .info-box strong { color: var(--blue); }
+  .warning-box { background: var(--red-light); border-radius: var(--radius-md); padding: 20px 24px; border-left: 3px solid var(--red); font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+  .warning-box strong { color: var(--red); }
+
+  /* FOOTER */
+  .footer { background: var(--asphalt); color: rgba(255,255,255,0.6); padding: 32px 0; font-size: 13px; }
+  .footer .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   .footer a { color: var(--amber); }
-  .footer a:hover { color: var(--white); text-decoration: none; }
+  .footer a:hover { color: #fff; text-decoration: none; }
 
-  /* ===== RESPONSIVE ===== */
+  /* RESPONSIVE */
   @media (max-width: 768px) {
-    .hero { padding: 60px 0 80px; }
-    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-illustration { height: 200px; }
-    .hero-stats { gap: 20px; }
-    .hero-stat-number { font-size: 26px; }
+    .hero { padding: 50px 0 70px; }
     .section { padding: 48px 0; }
-    .route-grid { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr; }
+    .step-flow { flex-direction: column; }
+    .step-item:not(:last-child) { margin-right: 0; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+    .step-item:not(:first-child) { border-radius: 0 0 var(--radius-md) var(--radius-md); }
     .nav-links { display: none; }
-    .info-grid { grid-template-columns: 1fr; }
-    .route-card.expanded { grid-column: 1; }
-    .filter-bar { gap: 6px; }
-    .filter-btn { padding: 6px 14px; font-size: 12px; }
+    .quiz-card { padding: 20px; }
   }
   @media (max-width: 480px) {
     .container { padding: 0 16px; }
-    .hero h1 { font-size: 32px; }
+    .hero h1 { font-size: 28px; }
     .hero p { font-size: 15px; }
-    .route-card { padding: 18px; }
-    .tips-grid { grid-template-columns: 1fr; }
   }
-
-  /* ===== REDUCED MOTION ===== */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
-
-  /* ===== PRINT ===== */
   @media print {
-    .nav, .filter-bar, .route-expand-btn, .footer { display: none; }
-    .route-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
-    .route-card.expanded .route-details { display: block; }
-    .hero { background: white; color: black; padding: 20px 0; }
-    .hero::before { display: none; }
-    .hero h1 { color: black; }
-    .hero h1 em { color: black; }
-    .hero p { color: #555; }
-    .hero-stats { border-top-color: #ccc; }
-    body { background: white; }
-    .section { padding: 20px 0; }
+    .nav, .footer, .quiz-container { display: none; }
+    body { background: #fff; font-size: 12px; }
+    .section { padding: 16px 0; }
+    .card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
   }
 
-  /* ===== SCROLL REVEAL (using Intersection Observer via JS) ===== */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ===== MOBILE NAV MENU ===== */
-  .mobile-menu-btn {
-    display: none;
-    width: 36px; height: 36px;
-    align-items: center; justify-content: center;
-    border-radius: var(--radius-sm);
-    color: var(--text);
-  }
-  @media (max-width: 768px) {
-    .mobile-menu-btn { display: flex; }
-  }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="nav" id="nav">
+<nav class="nav">
   <div class="container">
-    <a href="#" class="nav-logo">🚗 Rijexamen<span>Roeselare</span></a>
+    <a href="#" class="nav-logo">🚗 Rijexamen<span>Vlaanderen</span></a>
     <ul class="nav-links">
-      <li><a href="#routes">Routes</a></li>
-      <li><a href="#tips">Tips</a></li>
-      <li><a href="#exam-info">Exameninfo</a></li>
-      <li><a href="#mistakes">Valkuilen</a></li>
+      <li><a href="#procedure">Procedure</a></li>
+      <li><a href="#rgt">RGT</a></li>
+      <li><a href="#manoeuvres">Manoeuvres</a></li>
+      <li><a href="#regels">Regels</a></li>
+      <li><a href="#quiz">Oefentoets</a></li>
     </ul>
-    <button class="mobile-menu-btn" aria-label="Menu">☰</button>
   </div>
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <header class="hero">
   <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-badge">
-          <span class="dot"></span> Bijgewerkt juli 2026
-        </div>
-        <h1>20 Routes.<br>60 Checkpoints.<br><em>Jouw Rijexamen.</em></h1>
-        <p>Alles wat je moet weten voor het praktijkexamen rijbewijs B in Roeselare — met de officiële examenroutes, valkuilen per locatie, en praktische tips van geslaagde kandidaten.</p>
-        <div class="hero-stats">
-          <div>
-            <div class="hero-stat-number">20</div>
-            <div class="hero-stat-label">Examenroutes</div>
-          </div>
-          <div>
-            <div class="hero-stat-number">60+</div>
-            <div class="hero-stat-label">Checkpoints</div>
-          </div>
-          <div>
-            <div class="hero-stat-number">~56%</div>
-            <div class="hero-stat-label">Slaagpercentage</div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-illustration">
-        <div class="road-trace">
-          <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
-            <path class="trace-path" d="M40 280 Q120 260 160 200 Q200 140 240 160 Q280 180 300 120 Q320 60 360 80"/>
-            <path class="trace-path highlight" d="M40 280 Q120 260 160 200 Q200 140 240 160 Q280 180 300 120 Q320 60 360 80"/>
-            <circle cx="40" cy="280" r="10" class="trace-point active"/>
-            <circle cx="160" cy="200" r="10" class="trace-point"/>
-            <circle cx="300" cy="120" r="10" class="trace-point"/>
-            <circle cx="360" cy="80" r="10" class="trace-point"/>
-            <text x="40" y="308" class="trace-label" text-anchor="middle">START</text>
-            <text x="160" y="188" class="trace-label" text-anchor="middle">CP 1</text>
-            <text x="300" y="108" class="trace-label" text-anchor="middle">CP 2</text>
-            <text x="360" y="68" class="trace-label" text-anchor="middle">CP 3</text>
-          </svg>
-        </div>
+    <div class="hero-content">
+      <div class="hero-badge"><span class="dot"></span> Bijgewerkt juli 2026</div>
+      <h1>Alles wat je <em>écht</em> moet weten voor je praktijkexamen</h1>
+      <p>Geen routes die je toch niet rijdt. Wél de theorie achter het praktijkexamen: RGT gevaarherkenning, manoeuvres, voertuigcontrole, verkeersregels en de exacte examenprocedure — stap voor stap.</p>
+      <div class="hero-quickfacts">
+        <div class="hero-fact"><span class="hero-fact-icon amber">€</span><span>Examen: <strong>€100</strong></span></div>
+        <div class="hero-fact"><span class="hero-fact-icon blue">∞</span><span>Pogingen: <strong>onbeperkt</strong></span></div>
+        <div class="hero-fact"><span class="hero-fact-icon red">⚠️</span><span>1e keer: <strong>vaak niet geslaagd</strong></span></div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- Routes Section -->
-<section class="section" id="routes">
+<!-- EXAMEN PROCEDURE -->
+<section class="section" id="procedure">
   <div class="container reveal">
-    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">Examenroutes Roeselare</h2>
-    <p style="font-size:15px;color:var(--text-muted);margin-bottom:32px;">De 20 officiële doorgangspunten-routes voor categorie B (geldig 07/2026 – 06/2027). Klik op een route voor details en valkuilen.</p>
-
-    <!-- Filter bar -->
-    <div class="filter-bar" id="filterBar">
-      <button class="filter-btn active" data-filter="alle">Alle<span class="filter-count">20</span></button>
-      <button class="filter-btn" data-filter="centrum">Centrum</button>
-      <button class="filter-btn" data-filter="landelijk">Landelijk</button>
-      <button class="filter-btn" data-filter="snelweg">Snelweg</button>
-      <button class="filter-btn" data-filter="industrie">Industrie</button>
-      <button class="filter-btn" data-filter="gemengd">Gemengd</button>
+    <div class="section-header">
+      <h2>Zo verloopt je examen</h2>
+      <p>Het praktijkexamen bestaat uit twee delen: eerst de risicoperceptietest (RGT), dan het rijden op de openbare weg. Dit is de exacte volgorde.</p>
     </div>
-
-    <!-- Route grid -->
-    <div class="route-grid" id="routeGrid"></div>
+    <div class="step-flow">
+      <div class="step-item">
+        <h4>Aankomst & Controle</h4>
+        <p>Identiteitsbewijs, voorlopig rijbewijs, theoriecertificaat en RGT-certificaat tonen. Betaling van €100.</p>
+      </div>
+      <div class="step-item">
+        <h4>Voertuigcheck</h4>
+        <p>Examinator stelt 2–3 vragen over de auto: oliepeil, koelvloeistof, ruitenwisservloeistof, lichten, bandenprofiel.</p>
+      </div>
+      <div class="step-item">
+        <h4>RGT (Filmpjes)</h4>
+        <p>5 videoclips op een tablet. Jij geeft aan wat je ziet: remmen, gas lossen, of niets doen. Minstens 3/5 correct.</p>
+      </div>
+      <div class="step-item">
+        <h4>Rijden op de Weg</h4>
+        <p>±35 minuten rijden. Deel met instructies van de examinator, deel zelfstandig met GPS. Manoeuvre onderweg.</p>
+      </div>
+      <div class="step-item">
+        <h4>Uitslag & Feedback</h4>
+        <p>Direct na afloop hoor je of je geslaagd bent. De examinator bespreekt wat goed en fout ging.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Tips Section -->
-<section class="section" id="tips" style="background:var(--white);">
+<!-- RGT GEVAARHERKENNING -->
+<section class="section section-alt" id="rgt">
   <div class="container reveal">
-    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">Praktische Tips</h2>
-    <p style="font-size:15px;color:var(--text-muted);margin-bottom:32px;">Waar de examinatoren in Roeselare écht op letten.</p>
-    <div class="tips-grid">
-      <div class="tip-card reveal">
-        <div class="tip-card-icon amber">🔄</div>
-        <h3>Rotondes</h3>
-        <p>West-Vlaanderen telt veel rotondes. Voertuigen óp de rotonde hebben altijd voorrang. Kijk goed uit voor fietsers op het fietspad rond de rotonde. Signaleer bij het verlaten, en positioneer je correct op basis van je gewenste uitrit.</p>
+    <div class="section-header">
+      <h2>RGT — De Filmpjes</h2>
+      <p>De Risicoperceptietest (RGT) doe je vóór je gaat rijden. Je krijgt 5 korte videoclips te zien vanuit het perspectief van de bestuurder. Bij elke clip moet je aangeven wat je zou doen.</p>
+    </div>
+
+    <div class="info-box">
+      <strong>💡 Hoe werkt het?</strong> Je kijkt naar een tablet. Elke clip toont een verkeerssituatie. Zodra jij een gevaar ziet, tik je het scherm aan — of je doet niets als de situatie veilig is. Je hebt 3 opties: <strong>remmen</strong>, <strong>gas lossen</strong>, of <strong>niets doen</strong>. Je moet minstens 3 van de 5 clips correct inschatten om te slagen. Het RGT-certificaat is 3 jaar geldig.
+    </div>
+
+    <div class="card-grid">
+      <div class="card reveal">
+        <span class="card-badge badge-rgt">RGT — Scenario 1</span>
+        <h3>Plots overstekend kind</h3>
+        <p>Je rijdt door een woonwijk (zone 30). Tussen geparkeerde auto's rent plots een kind de straat op.</p>
+        <ul class="step-list">
+          <li>Actie: <strong>remmen</strong></li>
+          <li>Gevaar zichtbaar zodra het kind tussen de auto's verschijnt</li>
+          <li>Te laat reageren = fout</li>
+        </ul>
       </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon red">⚠️</div>
+      <div class="card reveal">
+        <span class="card-badge badge-rgt">RGT — Scenario 2</span>
+        <h3>Fietser op rotonde</h3>
+        <p>Je nadert een rotonde. Een fietser op het fietspad rond de rotonde komt van rechts en jij moet de rotonde verlaten.</p>
+        <ul class="step-list">
+          <li>Actie: <strong>gas lossen</strong> (of remmen als het krap is)</li>
+          <li>Fietsers op rotondes hebben voorrang als je afslaat</li>
+          <li>Kijk dubbel in je dode hoek</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-rgt">RGT — Scenario 3</span>
+        <h3>Nat wegdek, file voor je</h3>
+        <p>Je rijdt 70 km/u op een gewestweg. Het regent. Voor je remmen auto's plotseling af voor een file.</p>
+        <ul class="step-list">
+          <li>Actie: <strong>remmen</strong></li>
+          <li>Verdubbel je volgafstand bij regen</li>
+          <li>Zodra remlichten voor je aangaan = reageren</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-rgt">RGT — Scenario 4</span>
+        <h3>Groen licht, kruispunt</h3>
+        <p>Je nadert een kruispunt met groen licht. Van rechts komt een auto die duidelijk te snel rijdt en niet lijkt te stoppen.</p>
+        <ul class="step-list">
+          <li>Actie: <strong>gas lossen</strong> en klaar zijn om te remmen</li>
+          <li>Groen licht betekent niet 'veilig', het betekent 'je mag doorrijden mits het veilig is'</li>
+          <li>Anticipeer op fouten van anderen</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-rgt">RGT — Scenario 5</span>
+        <h3>Landbouwvoertuig voor je</h3>
+        <p>Je rijdt op een landelijke weg, 70 km/u. Voor je rijdt een tractor met aanhangwagen, 30 km/u. Een tegenligger nadert.</p>
+        <ul class="step-list">
+          <li>Actie: <strong>gas lossen</strong>, niet inhalen</li>
+          <li>Inhalen kan alleen als het veilig en toegestaan is</li>
+          <li>Geduld tonen is hier het juiste antwoord</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-rgt">RGT — Extra Tip</span>
+        <h3>Hoe scoor je 5/5?</h3>
+        <p>De sleutel is <strong>vroeg reageren</strong>. Hoe sneller je het gevaar ziet en de juiste actie kiest, hoe beter je scoort. Twijfel niet te lang — het systeem meet je reactiesnelheid.</p>
+        <ul class="step-list">
+          <li>Scan constant: voor, links, rechts, spiegels</li>
+          <li>Verwacht het onverwachte in woonwijken</li>
+          <li>Bij twijfel: gas lossen is veiliger dan niets doen</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANOEUVRES -->
+<section class="section" id="manoeuvres">
+  <div class="container reveal">
+    <div class="section-header">
+      <h2>Manoeuvres</h2>
+      <p>De examinator vraagt je minstens één manoeuvre uit te voeren. Dit zijn de meest voorkomende — met exacte stappen.</p>
+    </div>
+
+    <!-- Accordion for manoeuvres -->
+    <div class="accordion">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this)">
+        🅿️ Fileparkeren (achteruit tussen twee auto's)
+        <span class="icon">+</span>
+      </button>
+      <div class="accordion-panel">
+        <ol style="padding-left:20px;">
+          <li>Stop naast de voorste auto, op ±50 cm afstand, jouw achterbumper gelijk met die van de andere auto</li>
+          <li>Stuur volledig naar rechts (richting het trottoir)</li>
+          <li>Kijk in je spiegels en dode hoek — rij langzaam achteruit</li>
+          <li>Zodra jouw rechtervoorwiel ter hoogte van de achterbumper van de andere auto is: stuur volledig naar links</li>
+          <li>Blijf achteruit rijden tot je auto recht staat</li>
+          <li>Corrigeer indien nodig: stuur naar rechts en rij enkele centimeters vooruit</li>
+          <li><strong>Vergeet niet:</strong> handrem aantrekken, motor afzetten, stuur op slot</li>
+        </ol>
+        <div class="highlight">⚠️ De examinator let op: kijkgedrag (dode hoek!), snelheid (stapvoets), correct gebruik van stuur, en of je binnen de vakken/lijnen blijft.</div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this)">
+        ↙️ Achteruit recht parkeren (in een vak)
+        <span class="icon">+</span>
+      </button>
+      <div class="accordion-panel">
+        <ol style="padding-left:20px;">
+          <li>Rijd voorbij het vak tot je schouder ter hoogte van het midden van het vak naast je is</li>
+          <li>Stuur volledig in (naar het vak toe)</li>
+          <li>Kijk rondom — spiegels en dode hoek — rij langzaam achteruit</li>
+          <li>Zodra je auto in lijn staat met het vak: stuur snel terug naar recht</li>
+          <li>Corrigeer met kleine stuurbewegingen</li>
+          <li>Handrem, motor af, stuur op slot</li>
+        </ol>
+        <div class="highlight">⚠️ Belangrijk: rijd <strong>niet over de lijnen</strong> van het vak. Blijf bijsturen tot je recht staat. De examinator kijkt of je het in één vloeiende beweging kan, maar corrigeren mag.</div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this)">
+        🔄 Keren op een smalle straat (driepuntsdraai)
+        <span class="icon">+</span>
+      </button>
+      <div class="accordion-panel">
+        <ol style="padding-left:20px;">
+          <li>Stop aan de rechterkant van de weg</li>
+          <li>Stuur volledig naar links, kijk in spiegels + dode hoek, rij langzaam vooruit naar de overkant</li>
+          <li>Stop vlak voor de stoeprand aan de overkant</li>
+          <li>Stuur volledig naar rechts, kijk in spiegels + dode hoek, rij langzaam achteruit</li>
+          <li>Stop vlak voor de stoeprand</li>
+          <li>Stuur naar links, kijk, en rij vooruit — je staat nu in de tegenovergestelde richting</li>
+        </ol>
+        <div class="highlight">⚠️ Maximum 3 bewegingen (vooruit-achteruit-vooruit). Kijk bij élke beweging in de dode hoek. Geef voorrang aan al het andere verkeer.</div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this)">
+        🅿️ Vooruit schuin parkeren (op een parking)
+        <span class="icon">+</span>
+      </button>
+      <div class="accordion-panel">
+        <ol style="padding-left:20px;">
+          <li>Neem voldoende afstand van de geparkeerde auto's (minstens 1,5m)</li>
+          <li>Stuur in zodra je voorbumper ter hoogte van het begin van het vak is</li>
+          <li>Rijd langzaam het vak in</li>
+          <li>Stuur terug naar recht zodra je auto in lijn staat</li>
+          <li>Stop volledig in het vak — niet te ver vooruit of achteruit</li>
+          <li>Handrem, motor af, stuur op slot</li>
+        </ol>
+        <div class="highlight">⚠️ Let op voetgangers die tussen geparkeerde auto's door lopen. Kijk uit voor andere auto's die ook manoeuvreren.</div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this)">
+        🔧 Voertuigcontrole — Wat moet je kunnen checken?
+        <span class="icon">+</span>
+      </button>
+      <div class="accordion-panel">
+        <p>Voor je vertrekt kan de examinator je vragen om een aantal zaken aan de auto te controleren. Je hoeft ze niet allemaal perfect uit te voeren, maar je moet <strong>weten waar je moet kijken</strong>.</p>
+        <ul>
+          <li><strong>Oliepeil:</strong> Wijs de oliepeilstok aan. Leg uit: motor moet koud/afgezet zijn, peilstok eruit, schoonvegen, terug erin, dan aflezen tussen min en max.</li>
+          <li><strong>Koelvloeistof:</strong> Wijs het reservoir aan (meestal doorzichtig met roze/blauwe/groene vloeistof). Peil tussen min en max. Motor moet koud zijn bij openen.</li>
+          <li><strong>Ruitenwisservloeistof:</strong> Wijs het reservoir aan (meestal met ruitensproeier-symbool). Peil moet voldoende zijn.</li>
+          <li><strong>Remvloeistof:</strong> Wijs het reservoir aan. Peil tussen min en max.</li>
+          <li><strong>Bandenprofiel:</strong> Minimaal 1,6 mm over de volledige loopvlakbreedte. Geen scheuren of uitstulpingen.</li>
+          <li><strong>Lichten:</strong> Kan je aanwijzen hoe je dimlicht, grootlicht, richtingaanwijzers, remlichten en mistlichten controleert.</li>
+          <li><strong>Claxon:</strong> Werkt hij? Even kort drukken.</li>
+        </ul>
+        <div class="highlight">💡 Je hoeft dit niet perfect technisch te kunnen. De examinator wil zien dat je <strong>weet waar de reservoirs zitten</strong> en dat je begrijpt waarom regelmatige controle belangrijk is.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERKEERSREGELS PRAKTIJK -->
+<section class="section section-alt" id="regels">
+  <div class="container reveal">
+    <div class="section-header">
+      <h2>Verkeersregels Die Je Moet Kennen</h2>
+      <p>Niet de theorie voor het theorie-examen — dit zijn de regels die je in de praktijk moet toepassen en waar examinatoren het strengst op controleren.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card reveal">
+        <span class="card-badge badge-regels">Voorrang</span>
         <h3>Voorrang van Rechts</h3>
-        <p>In Roeselare centrum en omliggende dorpen zoals Ardooie en Kachtem gelden op veel kruispunten de standaard voorrangsregels: voorrang van rechts. De examinator test hier vaak op — te traag naderen is net zo fout als voorrang niet verlenen.</p>
+        <p>De standaardregel in België: bestuurders van rechts hebben voorrang, tenzij anders aangegeven met borden of markeringen.</p>
+        <ul class="step-list">
+          <li>Geldt op alle kruispunten zonder voorrangsborden</li>
+          <li>Haaietanden op het wegdek = jij moet voorrang verlenen</li>
+          <li>Ook fietsers van rechts hebben voorrang</li>
+          <li>Niet te traag naderen — dat is óók een fout</li>
+        </ul>
       </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon blue">📊</div>
-        <h3>Snelheidswisselingen</h3>
-        <p>Op de gewestwegen wissel je constant tussen 50 km/u (bebouwde kom) en 70 km/u (buiten bebouwde kom). De bordjes staan soms subtiel. De R32-ring is 70 km/u maar met flitspalen — blijf vlot maar binnen de limiet.</p>
+      <div class="card reveal">
+        <span class="card-badge badge-regels">Snelheid</span>
+        <h3>Snelheidslimieten</h3>
+        <p>De examinator test of je de limieten kent én toepast. Te traag is net zo fout als te snel.</p>
+        <ul class="step-list">
+          <li><strong>Bebouwde kom:</strong> 50 km/u (tenzij zone 30)</li>
+          <li><strong>Buiten bebouwde kom:</strong> 70 km/u (Vlaanderen)</li>
+          <li><strong>Snelweg:</strong> 120 km/u</li>
+          <li><strong>Zone 30:</strong> bij scholen, woonerven, centrum</li>
+          <li>De bordjes staan soms subtiel — scan constant</li>
+        </ul>
       </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon green">🧭</div>
-        <h3>GPS Navigatie</h3>
-        <p>Sinds oktober 2023 is GPS verplicht tijdens een deel van het examen. Je mag je eigen toestel of telefoon gebruiken (in een houder, met geluid aan). De examinator geeft een adres in — volg de instructies, maar blijf verkeersregels voorrang geven boven de GPS.</p>
+      <div class="card reveal">
+        <span class="card-badge badge-regels">Rotondes</span>
+        <h3>Rotondes</h3>
+        <p>Voertuigen óp de rotonde hebben voorrang. Jij moet wachten tot er een veilig gat is.</p>
+        <ul class="step-list">
+          <li>Kies de juiste rijstrook vóór je de rotonde oprijdt</li>
+          <li>Signaleer altijd bij het verlaten van de rotonde</li>
+          <li>Let op fietsers op het fietspad rond de rotonde</li>
+          <li>Fietsers hebben voorrang als jij de rotonde verlaat</li>
+        </ul>
       </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon amber">👁️</div>
-        <h3>Kijkgedrag</h3>
-        <p>Overdreven spiegelen is niet nodig, maar systematisch kijken wél: binnenspiegel → buitenspiegel → dode hoek bij elke richtingsverandering. Ook bij het openen van je portier: kijk eerst in de dode hoek.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon red">🚜</div>
-        <h3>Landbouwverkeer</h3>
-        <p>Op de landelijke wegen rond Roeselare kom je regelmatig tractoren en landbouwvoertuigen tegen. Geduld is hier cruciaal — haal alleen in waar het veilig en toegestaan is. De examinator let op je risico-inschatting.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Exam Info Section -->
-<section class="section" id="exam-info">
-  <div class="container reveal">
-    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">Exameninformatie</h2>
-    <p style="font-size:15px;color:var(--text-muted);margin-bottom:32px;">Praktische details over het examencentrum en de procedure.</p>
-
-    <div class="info-panel reveal">
-      <h3>📍 Examencentrum KM Roeselare</h3>
-      <div class="info-grid">
-        <div class="info-item">
-          <div class="info-item-label">Adres</div>
-          <div class="info-item-value">Brugsesteenweg 366, 8800 Roeselare</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">Telefoon</div>
-          <div class="info-item-value">051 26 27 10</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">Openingsuren</div>
-          <div class="info-item-value">Ma–Vr: 7:30–17:00</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">Theorie-examen</div>
-          <div class="info-item-value">Donderdag op afspraak</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="info-panel reveal">
-      <h3>💰 Tarieven 2026</h3>
-      <div class="info-grid">
-        <div class="info-item">
-          <div class="info-item-label">Praktijkexamen B</div>
-          <div class="info-item-value">€51</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">Theorie-examen</div>
-          <div class="info-item-value">€19</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">Risicoperceptietest (RGT)</div>
-          <div class="info-item-value">Inbegrepen bij praktijkexamen</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">Herkansing</div>
-          <div class="info-item-value">€51 (na min. 14 dagen)</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="info-panel reveal">
-      <h3>📋 Wat mee te nemen</h3>
-      <div class="info-grid">
-        <div class="info-item">
-          <div class="info-item-label">Identiteitsbewijs</div>
-          <div class="info-item-value">eID of paspoort</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">Voorlopig rijbewijs</div>
-          <div class="info-item-value">Geldig model (M36/M12)</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">Theoriecertificaat</div>
-          <div class="info-item-value">Geldig (< 3 jaar)</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">RGT-certificaat</div>
-          <div class="info-item-value">Risicoperceptietest (< 3 jaar)</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">Voertuig</div>
-          <div class="info-item-value">Verzekerd, gekeurd, L-teken</div>
-        </div>
-        <div class="info-item">
-          <div class="info-item-label">GPS</div>
-          <div class="info-item-value">Eigen toestel of telefoon in houder</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Mistakes Section -->
-<section class="section" id="mistakes" style="background:var(--white);">
-  <div class="container reveal">
-    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">Veel Gemaakte Fouten</h2>
-    <p style="font-size:15px;color:var(--text-muted);margin-bottom:32px;">Dit zijn de meest voorkomende redenen om te zakken in Roeselare. Ken ze, vermijd ze.</p>
-    <div class="tips-grid">
-      <div class="tip-card reveal">
-        <div class="tip-card-icon red">🚫</div>
-        <h3>Instructeur Grijpt In</h3>
-        <p>Als de examinator moet remmen of je stuur corrigeert, ben je onmiddellijk gezakt. Dit gebeurt vaak bij voorrangsfouten op de R32 of bij het invoegen op de E403. Anticipeer, twijfel niet te lang.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon amber">🅿️</div>
-        <h3>Parkeren</h3>
-        <p>Vergeet de handrem niet na het parkeren. Kijk voor je uitstapt in de dode hoek (voor fietsers). Parkeer vlot en binnen de vakken. Fileparkeren komt vaak voor in het centrum van Roeselare.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon blue">↗️</div>
+      <div class="card reveal">
+        <span class="card-badge badge-regels">Snelweg</span>
         <h3>Invoegen & Uitvoegen</h3>
-        <p>Op de E403: snelheid maken op de invoegstrook, spiegelen, dode hoek, en vlot invoegen. Bij het uitvoegen: tijdig voorsorteren en snelheid geleidelijk verminderen op de uitvoegstrook, niet op de snelweg zelf.</p>
+        <p>Het snelwegdeel van het examen test je comfort op hoge snelheid.</p>
+        <ul class="step-list">
+          <li><strong>Invoegen:</strong> snelheid opbouwen op de invoegstrook, spiegelen, dode hoek, vlot invoegen</li>
+          <li><strong>Rechts houden</strong> tenzij je inhaalt</li>
+          <li><strong>Uitvoegen:</strong> tijdig voorsorteren, pas op de uitvoegstrook vertragen</li>
+          <li>Volgafstand: minimaal 2 seconden (4 seconden bij regen)</li>
+        </ul>
       </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon red">📏</div>
-        <h3>Afstand Houden</h3>
-        <p>Onvoldoende volgafstand is een veel voorkomende opmerking. De 2-secondenregel is de norm: bij droog weer minimaal 2 seconden afstand tot je voorligger. Bij regen verdubbelen.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon amber">🔤</div>
-        <h3>Borden Missen</h3>
-        <p>Zone 30, voorrangsborden, eenrichtingsverkeer — in Roeselare centrum staan veel borden dicht op elkaar. De examinator test of je alle borden ziet én naleeft. Scan constant de omgeving.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-card-icon green">🚲</div>
+      <div class="card reveal">
+        <span class="card-badge badge-regels">Kwetsbare Weggebruikers</span>
         <h3>Fietsers & Voetgangers</h3>
-        <p>Zwakke weggebruikers zijn koning in Vlaanderen. Geef fietsers op een fietspad altijd voorrang bij het afslaan. Stop voor zebrapaden als iemand duidelijk wil oversteken. Kijk dubbel bij fietspaden op rotondes.</p>
+        <p>Zwakke weggebruikers zijn prioriteit nummer 1 voor de examinator.</p>
+        <ul class="step-list">
+          <li>Fietsers op een fietspad: altijd voorrang bij het afslaan</li>
+          <li>Zebrapad: stop als een voetganger duidelijk wil oversteken</li>
+          <li>Bij openen portier: kijk eerst in de dode hoek (voor fietsers!)</li>
+          <li>Schoolomgevingen: extra alert, snelheid aanpassen</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-regels">GPS</span>
+        <h3>GPS Navigatie</h3>
+        <p>Sinds oktober 2023 is GPS verplicht tijdens een deel van het examen.</p>
+        <ul class="step-list">
+          <li>Je mag je eigen toestel of telefoon gebruiken (in een houder!)</li>
+          <li>Geluid aan, scherm zichtbaar</li>
+          <li>De examinator geeft een adres in — jij volgt de instructies</li>
+          <li>Verkeersregels hebben ALTIJD voorrang boven de GPS</li>
+          <li>Als je een afslag mist: blijf kalm, de GPS herberekent</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
+<!-- VEEL GEMAAKTE FOUTEN -->
+<section class="section">
+  <div class="container reveal">
+    <div class="section-header">
+      <h2>Waarom Zakken Mensen?</h2>
+      <p>Dit zijn de échte redenen — geen algemeenheden, maar wat examinatoren noteren op hun formulier.</p>
+    </div>
+
+    <div class="warning-box">
+      <strong>🚫 Direct gezakt:</strong> Als de examinator moet ingrijpen (remmen of stuur corrigeren) is het onmiddellijk gedaan. Dit gebeurt het vaakst bij voorrangsfouten en bij het invoegen op de snelweg.
+    </div>
+
+    <div class="card-grid">
+      <div class="card reveal">
+        <span class="card-badge badge-rgt">Kritiek</span>
+        <h3>Instructeur Grijpt In</h3>
+        <p>Remmen of stuurcorrectie door de examinator = instant fail. Anticipeer, wees niet te passief maar ook niet roekeloos.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-manoeuvre">Manoeuvre</span>
+        <h3>Vergeten Handrem</h3>
+        <p>Na elke parkeermanoeuvre: handrem aantrekken. Klinkt simpel, wordt ontzettend vaak vergeten door de zenuwen.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-rgt">Kritiek</span>
+        <h3>Dode Hoek Vergeten</h3>
+        <p>Elke richtingsverandering, elke manoeuvre, bij het openen van je portier: binnenspiegel → buitenspiegel → dode hoek.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-regels">Voorrang</span>
+        <h3>Voorrangsfouten</h3>
+        <p>Te snel naderen op een kruispunt met voorrang van rechts. Of juist te traag twijfelen op een voorrangsweg.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-regels">Snelheid</span>
+        <h3>Snelheidsborden Missen</h3>
+        <p>Van 70 naar 50 bij bebouwde kom — het bord staat er soms onopvallend. Scan constant de omgeving.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-badge badge-controle">Controle</span>
+        <h3>Te Weinig Spiegelen</h3>
+        <p>Niet overdreven, maar systematisch: elke 10–15 seconden een spiegelcheck. Vooral vóór remmen, vóór richting aangeven.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIEVE QUIZ -->
+<section class="section section-alt" id="quiz">
+  <div class="container reveal">
+    <div class="section-header">
+      <h2>Test Je Kennis</h2>
+      <p>10 meerkeuzevragen over de praktijk. Net als de echte RGT, maar dan geschreven. Score: 7/10 of hoger is geslaagd.</p>
+    </div>
+
+    <div class="quiz-container">
+      <div class="quiz-progress" id="quizProgress"></div>
+      <div class="quiz-card" id="quizCard">
+        <div class="quiz-question" id="quizQuestion"></div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button id="quizNextBtn" style="display:none;margin-top:16px;padding:12px 24px;background:var(--asphalt);color:#fff;border-radius:100px;font-weight:700;font-size:14px;">Volgende →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container">
-    <p>Gebaseerd op openbare gegevens van <a href="https://www.km.be" target="_blank" rel="noopener">KM (Keuringsbureau Motorvoertuigen)</a> en <a href="https://www.gocavlaanderen.be" target="_blank" rel="noopener">GOCA Vlaanderen</a>. Routegegevens afkomstig uit het officiële doorgangspunten-document 2026–2027.</p>
-    <p style="margin-top:4px;">Geen officiële uitgave — altijd verifiëren met je rijinstructeur.</p>
+    <p>Gebaseerd op informatie van <a href="https://www.gocavlaanderen.be" target="_blank" rel="noopener">GOCA Vlaanderen</a> en <a href="https://www.km.be" target="_blank" rel="noopener">KM</a>. Geen officiële uitgave — altijd verifiëren met je rijschool.</p>
+    <p>Veel succes met je examen! 🍀</p>
   </div>
 </footer>
 
 <script>
-// ===== ROUTE DATA =====
-// Based on official GOCA checkpoint document for Examencentrum Roeselare 1010, Category B, 2026–2027
-const routes = [
+// Accordion
+function toggleAccordion(trigger) {
+  const panel = trigger.nextElementSibling;
+  const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+  trigger.setAttribute('aria-expanded', !isOpen);
+  panel.classList.toggle('open', !isOpen);
+  const icon = trigger.querySelector('.icon');
+  if (icon) icon.textContent = isOpen ? '+' : '−';
+}
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Quiz
+const quizData = [
   {
-    id: 1,
-    name: "Route 1 — Ardooie Noord",
-    category: "landelijk",
-    difficulty: "gemiddeld",
-    area: "Brugsesteenweg → Ardooie",
-    checkpoints: [
-      { name: "Rotonde Brugsesteenweg × R32", hazard: "Druk verkeer. Meerdere rijstroken op de rotonde. Let op voorsorteren." },
-      { name: "Rotonde Leopold III-laan × Brugsesteenweg", hazard: "Veel fietsers op het fietspad. Voorrang correct verlenen bij verlaten rotonde." },
-      { name: "Marktplaats Ardooie", hazard: "Voorrang van rechts in de dorpskern. Let op geparkeerde wagens die zicht belemmeren." }
-    ],
-    tips: "Snelheidswisseling tussen 50 km/u (bebouwde kom Roeselare) en 70 km/u op de gewestweg naar Ardooie. De borden staan kort na de rotonde — wees alert."
+    question: "Je rijdt in een zone 30. Tussen geparkeerde auto's rent plots een kind de straat op. Wat doe je?",
+    options: ["Niets — je rijdt toch maar 30 km/u", "Gas lossen", "Remmen"],
+    correct: 2,
+    explanation: "Zelfs bij 30 km/u moet je onmiddellijk remmen. De remweg bij 30 km/u is ±9 meter op droog wegdek. Een kind kan binnen 2 meter voor je auto staan."
   },
   {
-    id: 2,
-    name: "Route 2 — Kachtem Zuid",
-    category: "landelijk",
-    difficulty: "gemiddeld",
-    area: "R32 → Kachtem",
-    checkpoints: [
-      { name: "Rotonde Brugsesteenweg × R32", hazard: "Complexe rotonde met verkeerslichten. Positie kiezen afhankelijk van afslag." },
-      { name: "Rotonde Meensesteenweg × R32", hazard: "Tweede grote rotonde op korte afstand. Snel aanpassen aan nieuwe rijstrookindeling." },
-      { name: "Kachtemsestraat × Izegemsestraat", hazard: "Kruispunt met beperkte zichtbaarheid. Voorrang van rechts." }
-    ],
-    tips: "Op de Kachtemsestraat versmalt de weg buiten de bebouwde kom. Let op tegenliggers en landbouwvoertuigen."
+    question: "Je verlaat een rotonde. Op het fietspad naast de rotonde fietst een fietser rechtdoor. Wat doe je?",
+    options: ["Doorrijden — jij bent al op de rotonde", "Voorrang verlenen aan de fietser", "Claxonneren om de fietser te waarschuwen"],
+    correct: 1,
+    explanation: "Bij het verlaten van een rotonde moet je voorrang verlenen aan fietsers op het aanliggende fietspad. Kijk altijd in je dode hoek."
   },
   {
-    id: 3,
-    name: "Route 3 — Centrum Roeselare",
-    category: "centrum",
-    difficulty: "moeilijk",
-    area: "Brugsesteenweg → Grote Markt",
-    checkpoints: [
-      { name: "Ooststraat (eenrichtingsverkeer)", hazard: "Eenrichtingsstraten in het centrum. Let op de toegangsborden en volg de juiste rijrichting." },
-      { name: "Grote Markt Roeselare", hazard: "Voetgangerszone nabij. Zebrapaden en veel overstekende voetgangers. Snelheid aanpassen aan drukte." },
-      { name: "Stationsplein", hazard: "Complexe verkeerssituatie met bussen, taxi's, en fietsers. Overzicht bewaren." }
-    ],
-    tips: "In het centrum van Roeselare gelden meerdere zone 30-gebieden. De overgangen zijn subtiel — scan constant de borden. Voorrang van rechts is hier de standaardregel."
+    question: "Tijdens de RGT (risicoperceptietest) krijg je 5 videoclips te zien. Hoeveel moet je er correct beoordelen om te slagen?",
+    options: ["2 van de 5", "3 van de 5", "Alle 5"],
+    correct: 1,
+    explanation: "Je moet minstens 3 van de 5 clips correct inschatten. Dat is 60%. Je hebt 3 reactiemogelijkheden: remmen, gas lossen, of niets doen."
   },
   {
-    id: 4,
-    name: "Route 4 — Haven Industrie",
-    category: "industrie",
-    difficulty: "gemiddeld",
-    area: "Brugsesteenweg → Havengebied",
-    checkpoints: [
-      { name: "Brugsesteenweg richting R32 noord", hazard: "Oprit naar de ring. Snelheid opbouwen naar 70 km/u op de R32." },
-      { name: "Zwaaikomstraat", hazard: "Industrieterrein met veel vrachtverkeer. Smalle straat met geparkeerde vrachtwagens." },
-      { name: "Beverseaardeweg", hazard: "Overgang industriegebied naar landelijk. Snelheidsregime wijzigt van 50 naar 70 km/u." }
-    ],
-    tips: "In het havengebied is veel zwaar vrachtverkeer. Houd voldoende afstand en wees geduldig. De Beverseaardeweg heeft een scherpe bocht vlak na de brug."
+    question: "De examinator vraagt je om te fileparkeren. Je hebt de manoeuvre voltooid. Wat vergeet je absoluut niet?",
+    options: ["De radio uitzetten", "De handrem aantrekken", "Je gordel losmaken"],
+    correct: 1,
+    explanation: "De handrem vergeten is een van de meest gemaakte fouten. Na elke parkeermanoeuvre: handrem aantrekken, motor afzetten, en stuur op slot draaien."
   },
   {
-    id: 5,
-    name: "Route 5 — E403 Snelweg",
-    category: "snelweg",
-    difficulty: "gemiddeld",
-    area: "R32 → E403 → Afrit",
-    checkpoints: [
-      { name: "Oprit E403 Roeselare-centrum", hazard: "Invoegen op de snelweg. Snelheid goed opbouwen op de invoegstrook, spiegelen, dode hoek." },
-      { name: "E403 — rijdend gedeelte", hazard: "120 km/u aanhouden, voldoende volgafstand. Let op inhalend verkeer van achteren." },
-      { name: "Afrit volgende (bv. Roeselare-Haven)", hazard: "Tijdig voorsorteren op de uitvoegstrook. Pas op de uitvoegstrook vertragen, niet op de snelweg." }
-    ],
-    tips: "Het snelwegdeel test je comfort op hoge snelheid. Rijd vlot 120 km/u waar toegestaan, maar wees bereid te vertragen bij drukte of weersomstandigheden. Vergeet niet richting aan te geven bij het verlaten."
+    question: "Je rijdt op een gewestweg buiten de bebouwde kom. Wat is de maximumsnelheid in Vlaanderen?",
+    options: ["50 km/u", "70 km/u", "90 km/u"],
+    correct: 1,
+    explanation: "In Vlaanderen is de maximumsnelheid buiten de bebouwde kom 70 km/u (sinds 2017). Binnen de bebouwde kom is het 50 km/u, tenzij anders aangegeven."
   },
   {
-    id: 6,
-    name: "Route 6 — Beveren Oost",
-    category: "landelijk",
-    difficulty: "gemiddeld",
-    area: "Rotonde Brugsesteenweg → Beveren",
-    checkpoints: [
-      { name: "Rotonde Brugsesteenweg richting Beveren", hazard: "Eerste oriëntatiepunt na vertrek examencentrum. Correct voorsorteren." },
-      { name: "Beverseaardeweg (landelijk gedeelte)", hazard: "Smalle rijbaan, tegenliggers. Landbouwvoertuigen die plots opduiken." },
-      { name: "Beveren centrum (kerk)", hazard: "Dorpskern met voorrang van rechts. Geparkeerde wagens versmallen de doorgang." }
-    ],
-    tips: "Op landelijke wegen zoals de Beverseaardeweg is de maximumsnelheid 70 km/u, maar pas je snelheid aan de omstandigheden aan. Bij tegenliggers op een smalle weg: vertraag en wijk uit waar veilig."
+    question: "Je nadert een kruispunt zonder verkeerslichten of voorrangsborden. Van rechts komt een auto. Wat doe je?",
+    options: ["Doorrijden — jij was hier eerst", "Voorrang verlenen aan de auto van rechts", "Stoppen en wachten tot de andere auto ook stopt"],
+    correct: 1,
+    explanation: "In België geldt de standaardregel: voorrang van rechts. De bestuurder die van rechts komt heeft voorrang. Vertraag tijdig en verleen voorrang."
   },
   {
-    id: 7,
-    name: "Route 7 — Izegem Zuid-Oost",
-    category: "landelijk",
-    difficulty: "gemiddeld",
-    area: "R32 → Meensesteenweg → Izegem",
-    checkpoints: [
-      { name: "Rotonde Meensesteenweg × R32", hazard: "Grote rotonde, meerdere rijstroken. Druk verkeer tijdens spitsuren." },
-      { name: "Meensesteenweg (gewestweg)", hazard: "Lange rechte baan met zijstraten. Voorrang van rechts op meerdere punten." },
-      { name: "Centrum Izegem", hazard: "Stedelijk gebied met verkeerslichten en voetgangersoversteekplaatsen." }
-    ],
-    tips: "De Meensesteenweg is een invalsweg met veel zijstraten waar voorrang van rechts geldt. Vertraag licht bij elke zijstraat en scan naar rechts. Te snel doorrijden is een veelvoorkomende fout."
+    question: "Hoe lang is het RGT-certificaat (risicoperceptietest) geldig?",
+    options: ["1 jaar", "3 jaar", "5 jaar"],
+    correct: 1,
+    explanation: "Het RGT-certificaat is 3 jaar geldig. Je theoriecertificaat is ook 3 jaar geldig. Beide moeten geldig zijn op de dag van je praktijkexamen."
   },
   {
-    id: 8,
-    name: "Route 8 — Centrum Station",
-    category: "centrum",
-    difficulty: "moeilijk",
-    area: "Leopold III-laan → Stationsplein → Centrum",
-    checkpoints: [
-      { name: "Leopold III-laan", hazard: "Brede laan met druk verkeer. Wisselen van rijstrook voor afslag naar station." },
-      { name: "Stationsplein", hazard: "Zone 30 met bussen, taxi's, kiss & ride. Veel voetgangers die oversteken buiten zebrapad." },
-      { name: "Centrum Roeselare (winkelstraten)", hazard: "Eenrichtingsstraten, laad- en loszones, fietsers in beide richtingen." }
-    ],
-    tips: "Rond het station is het altijd druk. Rijd niet sneller dan 30 km/u, anticipeer op plots overstekende reizigers met koffers, en kijk uit voor bussen die haltes aandoen."
+    question: "Je moet invoegen op de snelweg. Wat is de juiste procedure?",
+    options: ["Snelheid opbouwen op de invoegstrook, spiegelen, dode hoek, vlot invoegen", "Stoppen aan het einde van de invoegstrook en wachten op een gat", "Meteen naar links sturen zodra je op de invoegstrook bent"],
+    correct: 0,
+    explanation: "Op de invoegstrook bouw je snelheid op tot de snelheid van het verkeer op de snelweg. Spiegelen, dode hoek checken, en dan vlot invoegen. Stoppen op de invoegstrook is gevaarlijk en fout."
   },
   {
-    id: 9,
-    name: "Route 9 — Ring R32",
-    category: "centrum",
-    difficulty: "gemiddeld",
-    area: "R32 Ring rond Roeselare",
-    checkpoints: [
-      { name: "R32 Noord (vanaf Brugsesteenweg)", hazard: "Oprit naar ring, snelheid opbouwen. Verschillende rijstroken per richting." },
-      { name: "R32 Oost (meerdere rotondes)", hazard: "Opeenvolgende rotondes. Positie kiezen, voorrang verlenen, fietsers op rotondes." },
-      { name: "R32 Zuid (richting E403)", hazard: "Complex knooppunt met snelwegafritten. Borden goed lezen voor juiste richting." }
-    ],
-    tips: "De R32 is 70 km/u met flitscamera's. De rotondes op de ring hebben vaak een apart fietspad — kijk dubbel bij het verlaten. Het stuk tussen R32-oost en R32-zuid heeft een tunnel onder het spoor."
+    question: "Wat is de volgafstand die je moet aanhouden bij droog weer?",
+    options: ["1 seconde tot je voorligger", "2 seconden tot je voorligger", "5 seconden tot je voorligger"],
+    correct: 1,
+    explanation: "De 2-secondenregel: kies een vast punt (brug, boom) — als je voorligger er voorbij rijdt, moet jij minstens 2 seconden later dat punt passeren. Bij regen: 4 seconden."
   },
   {
-    id: 10,
-    name: "Route 10 — Landelijk Kachtem",
-    category: "landelijk",
-    difficulty: "gemiddeld",
-    area: "Brugsesteenweg → Landelijke wegen → Kachtem",
-    checkpoints: [
-      { name: "Vertrek Examencentrum → Brugsesteenweg zuid", hazard: "Woonwijk verlaten, snelheid aanpassen van 50 naar 70 buiten bebouwde kom." },
-      { name: "Landelijke wegen richting Kachtem", hazard: "Smalle wegen, modder op de rijbaan (seizoensgebonden), landbouwvoertuigen." },
-      { name: "Kachtem kerk / dorpskern", hazard: "Bebouwde kom: snelheid terug naar 50 km/u. Voorrang van rechts bij kerkplein." }
-    ],
-    tips: "Op landelijke wegen moet je rekening houden met modder van tractoren (vooral in herfst/lente). Dit kan de remafstand verlengen. Pas je snelheid aan en houd het stuur stevig vast op modderige stukken."
-  },
-  {
-    id: 11,
-    name: "Route 11 — Ardooie Industrie",
-    category: "industrie",
-    difficulty: "gemiddeld",
-    area: "Ardooie → Polenplein → Industrieterrein",
-    checkpoints: [
-      { name: "Marktplaats Ardooie → Polenplein", hazard: "Overgang dorpskern naar hoofdweg. Voorrang van rechts op meerdere kruispunten." },
-      { name: "Polenplein Ardooie", hazard: "Druk plein met geparkeerde wagens. Beperkte zichtbaarheid op kruisend verkeer." },
-      { name: "Industrieterrein rand Roeselare", hazard: "Vrachtverkeer, opritten van bedrijven, keerbewegingen van bestelwagens." }
-    ],
-    tips: "Op industrieterreinen is de snelheid vaak 50 km/u maar de weginrichting kan anders doen vermoeden. Kijk uit voor vrachtwagens die achteruitrijden of plotseling laden/lossen."
-  },
-  {
-    id: 12,
-    name: "Route 12 — Centrum Voorrangswegen",
-    category: "centrum",
-    difficulty: "moeilijk",
-    area: "Centrum Roeselare — voorrangskruispunten",
-    checkpoints: [
-      { name: "Rotonde R32 → Centrum (Westlaan)", hazard: "Van ring naar centrum: snelheid van 70 naar 50 km/u. Voorrangsweg herkennen." },
-      { name: "Ooststraat × centrum", hazard: "Voorrang van rechts in de zijstraten. Let op de haaientanden op het wegdek." },
-      { name: "Kruispunt met voorrangsweg", hazard: "Herkennen of je op een voorrangsweg rijdt. Borden boven de weg en markeringen op het wegdek." }
-    ],
-    tips: "De examinator test of je het verschil kent tussen een voorrangsweg (bord B9) en voorrang van rechts. Op een voorrangsweg mag je doorrijden, maar blijf wel alert op fouten van anderen."
-  },
-  {
-    id: 13,
-    name: "Route 13 — E403 + Haven",
-    category: "snelweg",
-    difficulty: "moeilijk",
-    area: "R32 → E403 → Havengebied",
-    checkpoints: [
-      { name: "Oprit E403 via R32 zuid", hazard: "Complexe oprit vanaf de ring. Meerdere rijstroken, correct voorsorteren." },
-      { name: "E403 — korte rit", hazard: "Snelwegdeel: positie op de rijbaan, inhalen, veiligheidsafstand." },
-      { name: "Afrit haven / kanaalzone", hazard: "Uitvoegen en direct de industriële zone in rijden. Snelheidsaanpassing." }
-    ],
-    tips: "De combinatie snelweg → haven test je vermogen om na hoge snelheid direct over te schakelen naar een industriële omgeving. Gebruik de uitvoegstrook volledig, vertraag pas daar."
-  },
-  {
-    id: 14,
-    name: "Route 14 — AZ Delta Zuid",
-    category: "centrum",
-    difficulty: "gemiddeld",
-    area: "Brugsesteenweg → AZ Delta → Rotonde R32",
-    checkpoints: [
-      { name: "Brugsesteenweg zuidwaarts", hazard: "Lange rechte weg met meerdere verkeerslichten. Snelheid consistent houden." },
-      { name: "AZ Delta-omgeving", hazard: "Ziekenhuiszone: ambulances met voorrang, veel voetgangers, zone 30 bij ingang." },
-      { name: "Rotonde Brugsesteenweg × R32 (terugkeer)", hazard: "Vanuit zuiden de rotonde op. Andere invalshoek, zelfde regels." }
-    ],
-    tips: "Rond het AZ Delta ziekenhuis: geef altijd voorrang aan hulpdiensten met sirene en zwaailicht. Ga aan de kant en stop indien nodig. Bij de hoofdingang geldt vaak zone 30."
-  },
-  {
-    id: 15,
-    name: "Route 15 — Industrieterrein Beveren",
-    category: "industrie",
-    difficulty: "gemiddeld",
-    area: "Zwaaikomstraat → Beverseaardeweg → Industrie",
-    checkpoints: [
-      { name: "Zwaaikomstraat industriegebied", hazard: "Doodlopende straat voor autoverkeer? Nee, maar smal met vrachtverkeer." },
-      { name: "Beverseaardeweg zuid", hazard: "Weg met diepe grachten aan weerszijden. Geen uitwijkmogelijkheden." },
-      { name: "Industrieterrein Beveren-Roeselare", hazard: "Grote bedrijfswagens, heftrucks die de rijbaan oversteken, smalle doorgangen." }
-    ],
-    tips: "In dit deel van het industrieterrein zijn de wegen smal met water/greppels aan de zijkant. Blijf in het midden van je rijstrook en wees extra voorzichtig bij het passeren van tegenliggers."
-  },
-  {
-    id: 16,
-    name: "Route 16 — Centrum Eenrichting",
-    category: "centrum",
-    difficulty: "moeilijk",
-    area: "Grote Markt → Eenrichtingsstraten → Centrum",
-    checkpoints: [
-      { name: "Grote Markt Roeselare", hazard: "Historisch centrum met kasseien. Let op voetgangers en terrassen op de rijbaan." },
-      { name: "Eenrichtingsstraten (meerdere)", hazard: "Complex netwerk van eenrichtingsstraten. Borden goed lezen, niet tegen het verkeer in rijden." },
-      { name: "Uitrit centrum richting station", hazard: "Van zone 30 terug naar 50 km/u. Overgang is subtiel, bord niet missen." }
-    ],
-    tips: "De eenrichtingsstraten in Roeselare zijn smal en soms onoverzichtelijk door geparkeerde wagens. Let op het blauwe ronde bord met pijl. Fietsers mogen soms in beide richtingen — kijk goed bij elke zijstraat."
-  },
-  {
-    id: 17,
-    name: "Route 17 — Landelijk Ardooie Zuid",
-    category: "landelijk",
-    difficulty: "gemakkelijk",
-    area: "Landelijke verbindingswegen → Ardooie → Rotonde",
-    checkpoints: [
-      { name: "Brugsesteenweg noord → Landelijke afslag", hazard: "Afslaan op een smalle landweg. Tegenliggers eerst laten passeren." },
-      { name: "Landelijke wegen tussen Roeselare en Ardooie", hazard: "Open landschap, zijwind bij stormweer, modder op de rijbaan." },
-      { name: "Ardooie rotonde (buiten centrum)", hazard: "Standaard rotonde: voorrang verlenen aan verkeer op de rotonde." }
-    ],
-    tips: "De landelijke wegen tussen Roeselare en Ardooie zijn kaarsrecht met vergezichten. Dit nodigt uit tot sneller rijden — hou je aan 70 km/u (of 50 binnen bebouwde kom). Wind kan hier verraderlijk zijn."
-  },
-  {
-    id: 18,
-    name: "Route 18 — Ring West",
-    category: "centrum",
-    difficulty: "gemiddeld",
-    area: "R32 West → Brugsesteenweg → Rotonde",
-    checkpoints: [
-      { name: "R32 West — oprit vanaf industriegebied", hazard: "Op de ring invoegen met verkeer dat al 70 km/u rijdt. Snelheid goed opbouwen." },
-      { name: "R32 West richting Brugsesteenweg", hazard: "Afslag Brugsesteenweg correct nemen. Tijdig voorsorteren naar rechterrijstrook." },
-      { name: "Rotonde Brugsesteenweg × R32 (westzijde)", hazard: "Vanaf de ring de rotonde op. Snelheid verminderen van 70 naar 30 km/u voor de rotonde." }
-    ],
-    tips: "De westkant van de R32 heeft een afslag naar de Brugsesteenweg. Zorg dat je op tijd rechts zit. De snelheidsvermindering van 70 naar de rotonde (30-40 km/u) moet geleidelijk maar tijdig gebeuren."
-  },
-  {
-    id: 19,
-    name: "Route 19 — Snelweg Kort",
-    category: "snelweg",
-    difficulty: "gemakkelijk",
-    area: "E403 Oprit → Snelweg → Eerste Afrit → Terug",
-    checkpoints: [
-      { name: "Oprit E403 Roeselare-Haven", hazard: "Korte invoegstrook. Snel accelereren om veilig in te voegen tussen het verkeer." },
-      { name: "E403 — eerste kilometers", hazard: "Positie op de rijbaan: rechts houden tenzij inhalen. Spiegels regelmatig checken." },
-      { name: "Afrit Roeselare-centrum", hazard: "Uitvoegen, snelheid aanpassen na de afrit (vaak direct 50 km/u bebouwde kom)." }
-    ],
-    tips: "Dit is een kortere snelwegroute — ideaal om je snelwegvaardigheden te testen zonder te lange rit. De oprit bij Roeselare-Haven is korter dan gemiddeld: geef vlot gas."
-  },
-  {
-    id: 20,
-    name: "Route 20 — Allround Mix",
-    category: "gemengd",
-    difficulty: "moeilijk",
-    area: "Centrum → R32 → Landelijk → Terug",
-    checkpoints: [
-      { name: "Vertrek centrum Roeselare", hazard: "Druk stadsverkeer, fietsers, voetgangers. Snelheid 30 of 50 km/u afhankelijk van zone." },
-      { name: "R32 richting landelijk gebied", hazard: "Van stedelijk naar ring (70 km/u) naar landelijk (70 km/u). Verschillende regimes op korte afstand." },
-      { name: "Landelijk gebied + terugkeer naar examencentrum", hazard: "Navigatie via GPS: zelfstandig terugvinden naar Brugsesteenweg 366." }
-    ],
-    tips: "De allround route combineert alle elementen: centrum, ring, en landelijk. Het GPS-deel test of je zelfstandig kan navigeren. Vertrouw op de GPS-instructies maar blijf verkeersregels voorrang geven boven het navigatiesysteem."
+    question: "De examinator grijpt plotseling in en remt. Wat betekent dit?",
+    options: ["Je bent onmiddellijk gezakt", "Je krijgt een waarschuwing maar mag verder rijden", "Het examen wordt opnieuw gestart"],
+    correct: 0,
+    explanation: "Als de examinator moet ingrijpen (remmen of stuur corrigeren), ben je direct gezakt. Dit is een 'zware fout' — het examen stopt en je moet opnieuw boeken."
   }
 ];
 
-// ===== RENDER ROUTE CARDS =====
-const routeGrid = document.getElementById('routeGrid');
-const filterBar = document.getElementById('filterBar');
-let activeFilter = 'alle';
-let expandedCard = null;
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+const userAnswers = [];
 
-function getBadgeClass(category) {
-  const map = {
-    'centrum': 'badge-centrum',
-    'landelijk': 'badge-landelijk',
-    'snelweg': 'badge-snelweg',
-    'industrie': 'badge-industrie',
-    'gemengd': 'badge-gemengd'
-  };
-  return map[category] || 'badge-gemengd';
+function initQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  answered = false;
+  userAnswers.length = 0;
+
+  const progressHtml = quizData.map((_, i) => `<div class="quiz-dot" id="dot${i}"></div>`).join('');
+  document.getElementById('quizProgress').innerHTML = progressHtml;
+  document.getElementById('quizNextBtn').style.display = 'none';
+  document.getElementById('quizFeedback').classList.remove('show', 'pass', 'fail');
+  showQuestion(0);
 }
 
-function getBadgeLabel(category) {
-  const map = {
-    'centrum': 'Centrum',
-    'landelijk': 'Landelijk',
-    'snelweg': 'Snelweg',
-    'industrie': 'Industrie',
-    'gemengd': 'Gemengd'
-  };
-  return map[category] || 'Gemengd';
-}
-
-function getDifficultyStars(difficulty) {
-  if (difficulty === 'moeilijk') return '★★★';
-  if (difficulty === 'gemiddeld') return '★★☆';
-  return '★☆☆';
-}
-
-function renderRoutes(filter) {
-  const filtered = filter === 'alle' ? routes : routes.filter(r => r.category === filter);
-
-  // Update filter counts
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    const f = btn.dataset.filter;
-    const count = f === 'alle' ? routes.length : routes.filter(r => r.category === f).length;
-    const countSpan = btn.querySelector('.filter-count');
-    if (countSpan) countSpan.textContent = count;
-  });
-
-  routeGrid.innerHTML = filtered.map(route => `
-    <article class="route-card" data-id="${route.id}" data-category="${route.category}">
-      <div class="route-card-header">
-        <div>
-          <div class="route-number">R${String(route.id).padStart(2, '0')}</div>
-          <div class="route-title">${route.name}</div>
-          <div class="route-area">${route.area}</div>
-        </div>
-        <span class="route-badge ${getBadgeClass(route.category)}">${getBadgeLabel(route.category)}</span>
-      </div>
-
-      <ul class="checkpoint-list">
-        ${route.checkpoints.map((cp, i) => `
-          <li class="checkpoint-item">
-            <span class="checkpoint-dot${i === 0 ? ' start' : i === 2 ? ' end' : ''}"></span>
-            <span><strong>CP${i + 1}:</strong> ${cp.name}</span>
-          </li>
-        `).join('')}
-      </ul>
-
-      <button class="route-expand-btn" onclick="toggleRoute(${route.id})" aria-expanded="false">
-        Details & Valkuilen <span>→</span>
-      </button>
-
-      <div class="route-details">
-        <div class="route-trace-container">
-          <svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg">
-            <path class="mini-trace-path" d="M40 60 L260 60 L520 60 L760 60"/>
-            <path class="mini-trace-highlight" d="M40 60 L260 60 L520 60 L760 60"/>
-            <circle cx="40" cy="60" r="14" class="mini-trace-point"/>
-            <circle cx="260" cy="60" r="10" class="mini-trace-point mid"/>
-            <circle cx="520" cy="60" r="10" class="mini-trace-point mid"/>
-            <circle cx="760" cy="60" r="14" class="mini-trace-point"/>
-          </svg>
-          <div style="display:flex;justify-content:space-between;margin-top:10px;font-family:var(--font-mono);font-size:10px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:0.5px;">
-            <span>CP1 — ${route.checkpoints[0].name.split(' ').slice(0,2).join(' ')}</span>
-            <span>CP2 — ${route.checkpoints[1].name.split(' ').slice(0,2).join(' ')}</span>
-            <span>CP3 — ${route.checkpoints[2].name.split(' ').slice(0,2).join(' ')}</span>
-          </div>
-        </div>
-
-        <div class="detail-section">
-          <div class="detail-label">⚠️ Valkuilen per Checkpoint</div>
-          <ul class="hazard-list">
-            ${route.checkpoints.map((cp, i) => `
-              <li class="hazard-item">
-                <span class="icon">⚠️</span>
-                <span><strong>CP${i + 1}:</strong> ${cp.hazard}</span>
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-
-        <div class="detail-section">
-          <div class="tip-box">
-            <strong>💡 Rijtip:</strong> ${route.tips}
-          </div>
-        </div>
-
-        <div style="display:flex;gap:16px;margin-top:16px;font-size:13px;color:var(--text-muted);">
-          <span>🏷️ ${getBadgeLabel(route.category)}</span>
-          <span>📊 Moeilijkheid: ${getDifficultyStars(route.difficulty)} ${route.difficulty}</span>
-        </div>
-      </div>
-    </article>
-  `).join('');
-
-  // Reset expanded state
-  expandedCard = null;
-}
-
-function toggleRoute(id) {
-  const card = document.querySelector(`.route-card[data-id="${id}"]`);
-  if (!card) return;
-
-  // If already expanded, collapse
-  if (card.classList.contains('expanded')) {
-    card.classList.remove('expanded');
-    card.querySelector('.route-expand-btn').setAttribute('aria-expanded', 'false');
-    card.querySelector('.route-expand-btn').innerHTML = 'Details & Valkuilen <span>→</span>';
-    expandedCard = null;
+function showQuestion(index) {
+  if (index >= quizData.length) {
+    showResults();
     return;
   }
+  answered = false;
+  currentQuestion = index;
+  const q = quizData[index];
+  document.getElementById('quizQuestion').textContent = `Vraag ${index + 1}: ${q.question}`;
+  document.getElementById('quizOptions').innerHTML = q.options.map((opt, i) =>
+    `<button class="quiz-option" onclick="answerQuestion(${i})">${opt}</button>`
+  ).join('');
+  document.getElementById('quizFeedback').classList.remove('show', 'pass', 'fail');
+  document.getElementById('quizNextBtn').style.display = 'none';
 
-  // Collapse previous
-  if (expandedCard) {
-    expandedCard.classList.remove('expanded');
-    expandedCard.querySelector('.route-expand-btn').setAttribute('aria-expanded', 'false');
-    expandedCard.querySelector('.route-expand-btn').innerHTML = 'Details & Valkuilen <span>→</span>';
-  }
-
-  // Expand current
-  card.classList.add('expanded');
-  card.querySelector('.route-expand-btn').setAttribute('aria-expanded', 'true');
-  card.querySelector('.route-expand-btn').innerHTML = 'Sluiten <span>↑</span>';
-  expandedCard = card;
-
-  // Scroll to card if needed
-  card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-  // Re-trigger trace animation
-  const highlight = card.querySelector('.mini-trace-highlight');
-  if (highlight) {
-    highlight.style.animation = 'none';
-    highlight.offsetHeight; // reflow
-    highlight.style.animation = 'draw-path 1.5s ease-out 0.2s forwards';
-  }
-}
-
-// ===== FILTER HANDLING =====
-filterBar.addEventListener('click', (e) => {
-  const btn = e.target.closest('.filter-btn');
-  if (!btn) return;
-
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  activeFilter = btn.dataset.filter;
-  expandedCard = null;
-  renderRoutes(activeFilter);
-});
-
-// ===== NAVIGATION ACTIVE STATE =====
-const navLinks = document.querySelectorAll('.nav-links a');
-const sections = document.querySelectorAll('section[id], header[id]');
-
-function updateActiveNav() {
-  let current = '';
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100;
-    if (scrollY >= sectionTop) {
-      current = section.getAttribute('id');
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
+  // Update progress dots
+  document.querySelectorAll('.quiz-dot').forEach((dot, i) => {
+    dot.classList.remove('current', 'done', 'wrong');
+    if (i === index) dot.classList.add('current');
+    else if (i < index && userAnswers[i] !== undefined) {
+      dot.classList.add(userAnswers[i] === quizData[i].correct ? 'done' : 'wrong');
     }
   });
 }
 
-window.addEventListener('scroll', updateActiveNav, { passive: true });
+function answerQuestion(choice) {
+  if (answered) return;
+  answered = true;
+  const q = quizData[currentQuestion];
+  const correct = choice === q.correct;
+  userAnswers[currentQuestion] = choice;
 
-// ===== SCROLL REVEAL =====
-const revealElements = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
+  if (correct) score++;
+  document.querySelectorAll('.quiz-option').forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correct) btn.classList.add('correct');
+    if (i === choice && !correct) btn.classList.add('incorrect');
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-revealElements.forEach(el => revealObserver.observe(el));
-
-// ===== MOBILE MENU TOGGLE =====
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinksContainer = document.querySelector('.nav-links');
-
-mobileMenuBtn.addEventListener('click', () => {
-  const isOpen = navLinksContainer.style.display === 'flex';
-  if (isOpen) {
-    navLinksContainer.style.display = 'none';
-    mobileMenuBtn.textContent = '☰';
-    document.body.style.overflow = '';
-  } else {
-    navLinksContainer.style.display = 'flex';
-    navLinksContainer.style.flexDirection = 'column';
-    navLinksContainer.style.position = 'absolute';
-    navLinksContainer.style.top = '100%';
-    navLinksContainer.style.left = '0';
-    navLinksContainer.style.right = '0';
-    navLinksContainer.style.background = 'var(--pavement)';
-    navLinksContainer.style.padding = '16px 24px';
-    navLinksContainer.style.borderBottom = '1px solid var(--border)';
-    navLinksContainer.style.boxShadow = 'var(--shadow-md)';
-    mobileMenuBtn.textContent = '✕';
-    document.body.style.overflow = 'hidden';
-  }
-});
-
-// Close mobile menu on link click
-navLinksContainer.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-      navLinksContainer.style.display = 'none';
-      mobileMenuBtn.textContent = '☰';
-      document.body.style.overflow = '';
-    }
-  });
-});
-
-// ===== KEYBOARD NAVIGATION FOR ROUTE CARDS =====
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && expandedCard) {
-    toggleRoute(parseInt(expandedCard.dataset.id));
-  }
-});
-
-// ===== INITIAL RENDER =====
-renderRoutes('alle');
-
-// ===== SERVICE WORKER REGISTRATION FOR OFFLINE (optional PWA) =====
-if ('serviceWorker' in navigator) {
-  // Could add offline caching here — skipped for simplicity
+  const fb = document.getElementById('quizFeedback');
+  fb.textContent = correct ? '✅ Correct! ' + q.explanation : '❌ Fout! ' + q.explanation;
+  fb.classList.add('show', correct ? 'pass' : 'fail');
+  document.getElementById('quizNextBtn').style.display = 'inline-flex';
+  document.getElementById('quizNextBtn').textContent = currentQuestion < quizData.length - 1 ? 'Volgende →' : 'Bekijk resultaat';
 }
+
+function showResults() {
+  document.getElementById('quizProgress').innerHTML = '';
+  const pct = Math.round((score / quizData.length) * 100);
+  const passed = score >= 7;
+  document.getElementById('quizQuestion').textContent = '';
+  document.getElementById('quizOptions').innerHTML = '';
+  document.getElementById('quizFeedback').classList.remove('show');
+  document.getElementById('quizNextBtn').style.display = 'none';
+
+  const card = document.getElementById('quizCard');
+  card.innerHTML = `
+    <div class="quiz-score">${score}/${quizData.length}</div>
+    <div class="quiz-score-label">${passed ? '🎉 Geslaagd!' : '😔 Nog even oefenen'} — ${pct}%</div>
+    <p style="text-align:center;font-size:14px;color:var(--text-muted);margin-bottom:20px;">${passed ? 'Je bent goed voorbereid op de RGT en het praktijkexamen. Blijf oefenen met de filmpjes.' : 'Je hebt minstens 7/10 nodig. Bekijk de foute antwoorden hierboven en probeer opnieuw.'}</p>
+    <div style="text-align:center;">
+      <button onclick="initQuiz()" style="padding:12px 24px;background:var(--amber);color:#fff;border-radius:100px;font-weight:700;font-size:14px;">Opnieuw proberen</button>
+    </div>
+    <div style="margin-top:20px;">
+      ${quizData.map((q, i) => `
+        <div style="padding:10px 0;border-bottom:1px solid var(--border-light);font-size:13px;">
+          <strong>V${i+1}:</strong> ${userAnswers[i] === q.correct ? '✅' : '❌'} ${q.question}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+document.getElementById('quizNextBtn').addEventListener('click', () => showQuestion(currentQuestion + 1));
+initQuiz();
 </script>
 </body>
-</html> 
- 
+</html>
