@@ -239,6 +239,59 @@
 
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* VIDEO EMBEDS */
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .video-card {
+    background: var(--asphalt); border-radius: var(--radius-lg);
+    overflow: hidden; transition: all 0.25s ease;
+  }
+  .video-card:hover { box-shadow: var(--shadow-lg); }
+  .video-embed-container {
+    position: relative; width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
+  .video-embed-container iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+  }
+  .video-card-info { padding: 16px 18px; }
+  .video-card-info h4 {
+    font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .video-card-info p { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .video-card-info .video-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: 100px;
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    background: rgba(232,146,11,0.2); color: var(--amber);
+  }
+
+  .video-hero {
+    background: var(--asphalt); border-radius: var(--radius-lg);
+    padding: 40px; margin-bottom: 24px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .video-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(232,146,11,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .video-hero-content { position: relative; z-index: 1; }
+  .video-hero h3 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .video-hero p { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .video-hero .video-embed-container {
+    max-width: 720px; margin: 0 auto;
+    border-radius: var(--radius-md); overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  @media (max-width: 768px) {
+    .video-hero { padding: 24px; }
+    .video-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -308,12 +361,120 @@
 <section class="section section-alt" id="rgt">
   <div class="container reveal">
     <div class="section-header">
-      <h2>RGT — De Filmpjes</h2>
-      <p>De Risicoperceptietest (RGT) doe je vóór je gaat rijden. Je krijgt 5 korte videoclips te zien vanuit het perspectief van de bestuurder. Bij elke clip moet je aangeven wat je zou doen.</p>
+      <h2>RGT — De Filmfragmenten</h2>
+      <p>De Risicoperceptietest (RGT) doe je vóór je gaat rijden. Je krijgt 5 korte videoclips te zien vanuit het perspectief van de bestuurder. Op een tablet tik je het scherm aan zodra je een gevaar ziet: <strong>remmen</strong>, <strong>gas lossen</strong> of <strong>niets doen</strong>. Je moet minstens 3 van de 5 correct hebben. Hieronder kan je oefenen met echte RGT-compilaties.</p>
     </div>
 
-    <div class="info-box">
-      <strong>💡 Hoe werkt het?</strong> Je kijkt naar een tablet. Elke clip toont een verkeerssituatie. Zodra jij een gevaar ziet, tik je het scherm aan — of je doet niets als de situatie veilig is. Je hebt 3 opties: <strong>remmen</strong>, <strong>gas lossen</strong>, of <strong>niets doen</strong>. Je moet minstens 3 van de 5 clips correct inschatten om te slagen. Het RGT-certificaat is 3 jaar geldig.
+    <!-- Featured video -->
+    <div class="video-hero reveal">
+      <div class="video-hero-content">
+        <h3>▶️ Oefenexamen #2 — 10 Oefeningen</h3>
+        <p>De populairste RGT-compilatie. Tik het scherm aan zodra je een gevaar ziet — net zoals op het echte examen.</p>
+        <div class="video-embed-container">
+          <iframe src="https://www.youtube-nocookie.com/embed/kykp7C46ioA?rel=0&modestbranding=1"
+                  title="Risicoperceptietest Oefenexamen #2"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- More RGT compilations -->
+    <div class="section-header" style="margin-top:40px;">
+      <h2 style="font-size:20px;">Meer Oefenvideo's</h2>
+      <p>Oefen met deze RGT-compilaties van het kanaal <strong>Risicoperceptie-test</strong> — de beste bron voor het Vlaamse rijexamen.</p>
+    </div>
+
+    <div class="video-grid reveal">
+      <div class="video-card">
+        <div class="video-embed-container">
+          <iframe src="https://www.youtube-nocookie.com/embed/L1N_34JQrA4?rel=0&modestbranding=1"
+                  title="Risicoperceptietest Oefenexamen #1"
+                  allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-card-info">
+          <span class="video-badge">⭐ Aanrader</span>
+          <h4>Oefenexamen #1 — 13 Oefeningen</h4>
+          <p>Risicoperceptie-test · Nederlands</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-container">
+          <iframe src="https://www.youtube-nocookie.com/embed/bQBPX3BNvWY?rel=0&modestbranding=1"
+                  title="Risicoperceptietest Oefenexamen #3"
+                  allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-card-info">
+          <span class="video-badge">Nieuw</span>
+          <h4>Oefenexamen #3 — 10 Oefeningen</h4>
+          <p>Risicoperceptie-test · Nederlands</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-container">
+          <iframe src="https://www.youtube-nocookie.com/embed/nv7T8QD4jYQ?rel=0&modestbranding=1"
+                  title="Risicoperceptietest Oefenexamen #4"
+                  allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-card-info">
+          <h4>Oefenexamen #4 — 10 Oefeningen</h4>
+          <p>Risicoperceptie-test · Nederlands</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-container">
+          <iframe src="https://www.youtube-nocookie.com/embed/jZ6Oc94NlDg?rel=0&modestbranding=1"
+                  title="Risicoperceptietest Oefenexamen EXTRA"
+                  allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-card-info">
+          <h4>Oefenexamen EXTRA — Extra Oefeningen</h4>
+          <p>Risicoperceptie-test · Nederlands</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-container">
+          <iframe src="https://www.youtube-nocookie.com/embed/js4R4IWNNM4?rel=0&modestbranding=1"
+                  title="Risicoperceptietest Zware Oefeningen"
+                  allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-card-info">
+          <span class="video-badge">🔴 Moeilijk</span>
+          <h4>10 Zware RGT Oefeningen</h4>
+          <p>Gocar · Voor gevorderde oefening</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:28px;">
+      <strong>💡 Hoe gebruik je deze video's?</strong><br>
+      1. Open een compilatie en zet hem op volledig scherm.<br>
+      2. Tik op het scherm (of klik met je muis) zodra je een gevaar ziet — precies zoals op het echte examen.<br>
+      3. De video geeft aan of je op het juiste moment reageerde.<br>
+      4. Herhaal tot je bij elke clip het juiste moment voelt.<br>
+      <strong>Doel:</strong> vroeg genoeg reageren — niet te laat, niet te vroeg. Minstens 3 van de 5 correct = geslaagd.
+    </div>
+
+    <!-- Common RGT scenario cards (text reference) -->
+    <div class="section-header" style="margin-top:40px;">
+      <h2 style="font-size:20px;">Veel Voorkomende RGT-Scenario's</h2>
+      <p>Deze situaties kom je gegarandeerd tegen in de filmpjes. Weet wat je moet doen.</p>
     </div>
 
     <div class="card-grid">
